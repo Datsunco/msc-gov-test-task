@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../main';
+import { observer } from 'mobx-react-lite';
+
 
 
 const CircleComponent = ({ elements, circleRadius }) => {
+  const { store } = useContext(Context)
   const numberOfElements = elements.length
   const circleElements = [];
 
 
   const checkTextAlign = (angle) => {
     if (angle < Math.PI && angle > 0) return 'left'
-    else if (angle > Math.PI && angle < Math.PI*2) return 'right'
+    else if (angle > Math.PI && angle < Math.PI * 2) return 'right'
     else return 'center'
   }
 
   const checkXOffset = (angle) => {
     if (angle < Math.PI && angle > 0) return +40
-    else if (angle > Math.PI && angle < Math.PI*2) return -40
+    else if (angle > Math.PI && angle < Math.PI * 2) return -40
     else return 0
   }
 
@@ -52,8 +56,8 @@ const CircleComponent = ({ elements, circleRadius }) => {
           key={i}
           style={{
             position: 'absolute',
-            top: y + 50 * Math.sin(i * angleStep + Math.PI * 3 / 2) ,
-            left: x + 40 * Math.cos(i * angleStep + Math.PI * 3 / 2) + checkXOffset(i * angleStep ),
+            top: y + 50 * Math.sin(i * angleStep + Math.PI * 3 / 2),
+            left: x + 40 * Math.cos(i * angleStep + Math.PI * 3 / 2) + checkXOffset(i * angleStep),
             transform: 'translate(-50%, -50%)',
             width: '90px',
             minHeight: '30px',
@@ -67,7 +71,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
             verticalAlign: 'middle',
             textAlign: checkTextAlign(i * angleStep)
           }}
-          >
+        >
           {elements[i].name}
         </div>
       </>
@@ -89,4 +93,4 @@ const CircleComponent = ({ elements, circleRadius }) => {
   );
 }
 
-export default CircleComponent;
+export default observer(CircleComponent);
