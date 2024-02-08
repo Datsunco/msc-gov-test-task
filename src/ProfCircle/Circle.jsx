@@ -12,6 +12,12 @@ const CircleComponent = ({ elements, circleRadius }) => {
     else return 'center'
   }
 
+  const checkXOffset = (angle) => {
+    if (angle < Math.PI && angle > 0) return +40
+    else if (angle > Math.PI && angle < Math.PI*2) return -40
+    else return 0
+  }
+
   for (let i = 0; i < numberOfElements; i++) {
 
     const angleStep = (2 * Math.PI) / numberOfElements;
@@ -40,20 +46,17 @@ const CircleComponent = ({ elements, circleRadius }) => {
           }}
         >
           {i + 1}
-
+          {/* (i * angleStep > 0 && i * angleStep < Math.PI ? +40 : -40)  */}
         </div>
         <div
           key={i}
           style={{
             position: 'absolute',
-            top: y + 30 * Math.sin(i * angleStep + Math.PI * 3 / 2),
-            left: x + 30 * Math.cos(i * angleStep + Math.PI * 3 / 2) ,
+            top: y + 50 * Math.sin(i * angleStep + Math.PI * 3 / 2) ,
+            left: x + 40 * Math.cos(i * angleStep + Math.PI * 3 / 2) + checkXOffset(i * angleStep ),
             transform: 'translate(-50%, -50%)',
             width: '90px',
-            minHeight: '60px',
-            // height: '30px',
-            // borderRadius: '50%',
-            // backgroundColor: 'blue',
+            minHeight: '30px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -70,7 +73,6 @@ const CircleComponent = ({ elements, circleRadius }) => {
       </>
     );
   }
-  // {checkTextAlign(i * angleStep)}
   return (
     <div
       style={{

@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <CircleComponent elements={data} circleRadius={125} />
-      {/* <SkillCircleComponent numberOfElements={18} circleRadius={250} /> */}
+      <SkillCircleComponent numberOfElements={18} circleRadius={300} />
     </>
   )
 }
