@@ -6,15 +6,27 @@ import data from './data/prof.json'
 
 
 function App() {
-  // data.forEach(element => {
+  //Развлечения с Set
+  let iter = 0
+  let skillsDataSet = new Set()
+  data.forEach(element => {
+    element.mainSkills.forEach(skill => {
+      skillsDataSet.add(skill)
+      iter+=1
+    })
+  }) 
+  //end
+  let skillsData = []
+  skillsDataSet.forEach((value, valueAgain, set) => {
+    skillsData.push({name: value})
+  });
 
-  // });
-
-  console.log(data)
+  // console.log(skillsDataSet.size)
+  // console.log(iter)
   return (
     <>
       <CircleComponent elements={data} circleRadius={125} />
-      <SkillCircleComponent numberOfElements={18} circleRadius={300} />
+      <SkillCircleComponent elements={skillsData} circleRadius={300} />
     </>
   )
 }
