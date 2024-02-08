@@ -30,7 +30,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
     const y = circleRadius + circleRadius * Math.sin(i * angleStep + Math.PI * 3 / 2);
 
     circleElements.push(
-      <>
+      <div onMouseEnter={() => store.setActiveSkills(elements[i].mainSkills)}>
         <div
           key={i}
           style={{
@@ -74,7 +74,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
         >
           {elements[i].name}
         </div>
-      </>
+      </div>
     );
   }
   return (

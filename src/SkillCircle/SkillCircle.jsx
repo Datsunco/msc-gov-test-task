@@ -1,9 +1,16 @@
-import React from 'react';
-
+import React, {useContext, useEffect} from 'react';
+import { Context } from '../main';
+import { observer } from 'mobx-react-lite';
+import styles from './SkillCircle.module.scss'
 
 const SkillCircleComponent = ({ elements, circleRadius }) => {
+    const { store } = useContext(Context)
     const numberOfElements = elements.length
     const circleElements = [];
+
+    useEffect(() => {
+
+    }, [store])
 
     const checkTextAlign = (angle) => {
         if (angle < Math.PI && angle > 0) return 'left'
@@ -48,7 +55,6 @@ const SkillCircleComponent = ({ elements, circleRadius }) => {
 
                 </div>
                 <div
-                    key={i}
                     style={{
                         position: 'absolute',
                         top: y + 30 * Math.sin(i * angleStep + Math.PI * 3 / 2),
@@ -88,4 +94,4 @@ const SkillCircleComponent = ({ elements, circleRadius }) => {
     );
 }
 
-export default SkillCircleComponent;
+export default observer(SkillCircleComponent);
