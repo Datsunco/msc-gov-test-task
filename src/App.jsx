@@ -25,6 +25,7 @@ function App() {
   })
   //end
   let skillsData = []
+  let skillsDataAxis = {}
   i = 0
   skillsDataSet.forEach((value, valueAgain, set) => {
     const angleStep = (2 * Math.PI) / 28;
@@ -33,8 +34,9 @@ function App() {
     const y = 300 + 300 * Math.sin(i * angleStep + Math.PI * 3 / 2);
     i += 1
     skillsData.push({ name: value, x: x, y: y})
+    skillsDataAxis[value] = {x,y}
   });
-  store.setSkillsData(skillsData)
+  store.setSkillsData(skillsDataAxis)
 
   // console.log(skillsDataSet.size)
   // console.log(iter)

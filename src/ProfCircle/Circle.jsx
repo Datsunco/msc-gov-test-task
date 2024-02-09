@@ -36,6 +36,14 @@ const CircleComponent = ({ elements, circleRadius }) => {
     const activeState = store.isActiveProf(elements[i].name)
 
     const linkedSkills = [...elements[i].mainSkills, ...elements[i].otherSkills]
+    const linkedSkillsAxis = []
+
+    // linkedSkills.forEach(skill => {
+    //   // linkedSkillsAxis.push(store.skillsData.filter(storeSkill => storeSkill.name === skill))
+    //   // console.log(skill, store.skillsData.filter(storeSkill => storeSkill.name === skill))
+    //   store.getAxisSkill(skill)
+    // })
+    // console.log("lines",linkedSkillsAxis)
 
     circleElements.push(
       <div onClick={() => onClickProfCircle(elements[i])}>
@@ -84,6 +92,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
 
       </div>
     );
+
   }
   return (
     <>
