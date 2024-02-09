@@ -53,18 +53,19 @@ function App() {
     const y = 300 + 300 * Math.sin(i * angleStep + Math.PI * 3 / 2);
 
     i += 1
-    skillsData.push({ name: value })
+    skillsData.push({ name: value, x, y})
     skillsDataAxis[value] = { x, y }
   });
   store.setSkillsData(skillsDataAxis)
+  store.setSkillsDataArray(skillsData)
 
   return (
     <>
       {/* <div>
         <h1>TEXT</h1>
       </div> */}
-      <CircleComponent elements={data} circleRadius={125} />
-      <SkillCircleComponent elements={skillsData} circleRadius={300} />
+      <CircleComponent circleRadius={125} />
+      <SkillCircleComponent circleRadius={300} />
       <Curves elements={data} />
     </>
   )

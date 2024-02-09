@@ -4,13 +4,14 @@ import { observer } from 'mobx-react-lite';
 import styles from './ProfCircle.module.scss'
 
 
-const CircleComponent = ({ elements, circleRadius }) => {
+const CircleComponent = ({circleRadius }) => {
   const { store } = useContext(Context)
+  const elements = store.data
   const numberOfElements = elements.length
   const circleElements = [];
   const linkedSkillsAxis = []
 
-  console.log(store.getData())
+  // console.log(store.getData())
 
 
   const checkTextAlign = (angle) => {
@@ -28,6 +29,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
   const onClickProfCircle = (element) => {
     store.setActiveProf(element.name)
     store.setActiveSkills([...element.mainSkills, ...element.otherSkills])
+    store.swapSkills(element.name, [...element.mainSkills, ...element.otherSkills])
   }
 
   for (let i = 0; i < numberOfElements; i++) {

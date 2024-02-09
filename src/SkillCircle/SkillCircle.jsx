@@ -3,13 +3,14 @@ import { Context } from '../main';
 import { observer } from 'mobx-react-lite';
 import styles from './SkillCircle.module.scss'
 
-const SkillCircleComponent = ({ elements, circleRadius }) => {
+const SkillCircleComponent = ({circleRadius }) => {
     const { store } = useContext(Context)
+    const elements = store.skillsDataArray
     const numberOfElements = elements.length
     const circleElements = [];
 
     useEffect(() => {
-        console.log('changed skill circle')
+        // console.log('changed skill circle')
     }, [store])
 
     // const checkTextAlign = (angle) => {

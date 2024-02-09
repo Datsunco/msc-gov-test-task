@@ -11,7 +11,7 @@ const CurrentCurves = ({curves, prof}) => {
 
     useEffect(() => {
         setIsActive(store.isActiveProf(prof))
-        console.log('changed')
+        // console.log('changed')
     }, [store])
 
     curves.forEach(skill => {
