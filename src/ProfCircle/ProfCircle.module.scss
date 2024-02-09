@@ -6,6 +6,18 @@
     background: #00A372;
 }
 
+.bezier_curve {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-curve 5s ease-in-out forwards;
+  }
+  
+  @keyframes draw-curve {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
 // .line_path {
 //     stroke-dasharray: 1000; /* Длинна линии для анимации */
 //     stroke-dashoffset: 1000; /* Начальное смещение линии */

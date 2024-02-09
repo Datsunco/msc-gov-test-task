@@ -15,12 +15,11 @@ export default class Store {
     }
 
     setActiveProf(profs) {
-        console.log('setProf', profs)
         this.activeProfs = [profs]
     }
 
     setSkillsData(skillsData) {
-        this.activeProfs = skillsData
+        this.skillsData = skillsData
         console.log(skillsData)
     }
 
@@ -37,9 +36,8 @@ export default class Store {
     }
 
     isActiveProf(prof) {
-        console.log(this.activeProfs)
         let flag = false
-        this?.activeProfs.forEach(activeProf => {
+        this.activeProfs?.forEach(activeProf => {
             if (prof === activeProf) {
                 flag = true
                 return true
@@ -49,7 +47,12 @@ export default class Store {
     }
 
     getAxisSkill(skill) {
-        console.log(skill,this.skillsData.filter(storeSkill => storeSkill.name === skill))
+        const x = this.skillsData[skill].x
+        const y = this.skillsData[skill].y
+        console.log(skill,x,y)
+        return {x,y}
+        
+        // console.log(skill,this.skillsData.filter(storeSkill => storeSkill.name === skill))
         // linkedSkillsAxis.push(store.skillsData.filter(storeSkill => storeSkill.name === skill))
         // console.log(skill, store.skillsData.filter(storeSkill => storeSkill.name === skill))
 

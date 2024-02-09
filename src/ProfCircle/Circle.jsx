@@ -8,6 +8,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
   const { store } = useContext(Context)
   const numberOfElements = elements.length
   const circleElements = [];
+  const linkedSkillsAxis = []
 
 
   const checkTextAlign = (angle) => {
@@ -33,17 +34,29 @@ const CircleComponent = ({ elements, circleRadius }) => {
 
     const x = circleRadius + circleRadius * Math.cos(i * angleStep + Math.PI * 3 / 2);
     const y = circleRadius + circleRadius * Math.sin(i * angleStep + Math.PI * 3 / 2);
+
+
     const activeState = store.isActiveProf(elements[i].name)
 
     const linkedSkills = [...elements[i].mainSkills, ...elements[i].otherSkills]
-    const linkedSkillsAxis = []
+    // const linkedSkillsAxis = []
 
-    // linkedSkills.forEach(skill => {
-    //   // linkedSkillsAxis.push(store.skillsData.filter(storeSkill => storeSkill.name === skill))
-    //   // console.log(skill, store.skillsData.filter(storeSkill => storeSkill.name === skill))
-    //   store.getAxisSkill(skill)
-    // })
-    // console.log("lines",linkedSkillsAxis)
+    if (i) {
+      //Создаем все кривые Безье 
+      linkedSkills.forEach(skill => {
+        const axis = store.getAxisSkill(skill)
+        const d = `M${x+175},${y+175} C${x},${axis.y} ${axis.x},${y} ${axis.x},${axis.y}`;
+        linkedSkillsAxis.push(
+          <path
+            id={x + 'skill'}
+            d={d}
+            fill="none"
+            stroke="black"
+            strokeWidth="2"
+            className={styles.bezier_curve}
+          />)
+      })
+    }
 
     circleElements.push(
       <div onClick={() => onClickProfCircle(elements[i])}>
@@ -109,15 +122,18 @@ const CircleComponent = ({ elements, circleRadius }) => {
       >
         {circleElements}
       </div>
-      {/* <svg width="400" height="200">
-        <path
-          d="M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" // Кривая Безье
-          stroke="black"
-          fill="transparent"
-          strokeWidth="2"
-          className={styles.line_path}
-        />
-      </svg> */}
+      <svg
+        style={{
+          transform: 'translate(-50%, -50%)',
+          position: 'absolute',
+          width: 600,
+          height: 600,
+          borderRadius: '50%',
+          zIndex: '101'
+        }}
+      >
+        {linkedSkillsAxis}
+      </svg>
     </>
   );
 }
