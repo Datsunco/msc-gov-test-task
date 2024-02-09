@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Context } from '../main';
 import { observer } from 'mobx-react-lite';
-
+import styles from './ProfCircle.module.scss'
 
 
 const CircleComponent = ({ elements, circleRadius }) => {
@@ -22,17 +22,26 @@ const CircleComponent = ({ elements, circleRadius }) => {
     else return 0
   }
 
+  const onClickProfCircle = (element) => {
+    store.setActiveProf(element.name)
+    store.setActiveSkills([...element.mainSkills, ...element.otherSkills])
+  }
+
   for (let i = 0; i < numberOfElements; i++) {
 
     const angleStep = (2 * Math.PI) / numberOfElements;
 
     const x = circleRadius + circleRadius * Math.cos(i * angleStep + Math.PI * 3 / 2);
     const y = circleRadius + circleRadius * Math.sin(i * angleStep + Math.PI * 3 / 2);
+    const activeState = store.isActiveProf(elements[i].name)
+
+    const linkedSkills = [...elements[i].mainSkills, ...elements[i].otherSkills]
 
     circleElements.push(
-      <div onMouseEnter={() => store.setActiveSkills(elements[i].mainSkills)}>
+      <div onClick={() => onClickProfCircle(elements[i])}>
         <div
-          key={i}
+          key={i + 'profcircle'}
+          className={activeState ? styles.circle_active : styles.circle}
           style={{
             position: 'absolute',
             top: y,
@@ -41,7 +50,6 @@ const CircleComponent = ({ elements, circleRadius }) => {
             width: '30px',
             height: '30px',
             borderRadius: '50%',
-            backgroundColor: 'blue',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -50,10 +58,9 @@ const CircleComponent = ({ elements, circleRadius }) => {
           }}
         >
           {i + 1}
-          {/* (i * angleStep > 0 && i * angleStep < Math.PI ? +40 : -40)  */}
         </div>
         <div
-          key={i}
+          key={i + 'proftxt'}
           style={{
             position: 'absolute',
             top: y + 50 * Math.sin(i * angleStep + Math.PI * 3 / 2),
@@ -74,22 +81,35 @@ const CircleComponent = ({ elements, circleRadius }) => {
         >
           {elements[i].name}
         </div>
+
       </div>
     );
   }
   return (
-    <div
-      style={{
-        transform: 'translate(-50%, -50%)',
-        position: 'absolute',
-        width: circleRadius * 2,
-        height: circleRadius * 2,
-        borderRadius: '50%',
-        border: '1px solid black',
-      }}
-    >
-      {circleElements}
-    </div>
+    <>
+      <div
+        style={{
+          transform: 'translate(-50%, -50%)',
+          position: 'absolute',
+          width: circleRadius * 2,
+          height: circleRadius * 2,
+          borderRadius: '50%',
+          border: '2.35px solid #ADADAD',
+          zIndex: '100'
+        }}
+      >
+        {circleElements}
+      </div>
+      {/* <svg width="400" height="200">
+        <path
+          d="M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" // Кривая Безье
+          stroke="black"
+          fill="transparent"
+          strokeWidth="2"
+          className={styles.line_path}
+        />
+      </svg> */}
+    </>
   );
 }
 

@@ -1,0 +1,20 @@
+.circle{
+    background: #ADADAD;
+}
+
+.circle_active{
+    background: #00A372;
+}
+
+// .line_path {
+//     stroke-dasharray: 1000; /* Длинна линии для анимации */
+//     stroke-dashoffset: 1000; /* Начальное смещение линии */
+//     animation: draw-line 5s forwards; /* Анимация появления */
+//   }
+  
+//   /* Описание анимации с использованием cubic-bezier */
+//   @keyframes draw-line {
+//     to {
+//       stroke-dashoffset: 0;
+//     }
+//   }

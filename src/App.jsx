@@ -2,24 +2,39 @@ import CircleComponent from './ProfCircle/Circle.jsx'
 import SkillCircleComponent from './SkillCircle/SkillCircle.jsx'
 import './App.css'
 import data from './data/prof.json'
+import { useContext } from 'react'
+import { Context } from './main.jsx'
+import { observer } from 'mobx-react-lite'
 
 
 
 function App() {
+  const { store } = useContext(Context)
   //Развлечения с Set
-  let iter = 0
+  let i = 0
   let skillsDataSet = new Set()
   data.forEach(element => {
     element.mainSkills.forEach(skill => {
       skillsDataSet.add(skill)
-      iter+=1
+      i += 1
     })
-  }) 
+    element.otherSkills.forEach(skill => {
+      skillsDataSet.add(skill)
+      i += 1
+    })
+  })
   //end
   let skillsData = []
+  i = 0
   skillsDataSet.forEach((value, valueAgain, set) => {
-    skillsData.push({name: value})
+    const angleStep = (2 * Math.PI) / 28;
+
+    const x = 300 + 300 * Math.cos(i * angleStep + Math.PI * 3 / 2);
+    const y = 300 + 300 * Math.sin(i * angleStep + Math.PI * 3 / 2);
+    i += 1
+    skillsData.push({ name: value, x: x, y: y})
   });
+  store.setSkillsData(skillsData)
 
   // console.log(skillsDataSet.size)
   // console.log(iter)
@@ -31,4 +46,4 @@ function App() {
   )
 }
 
-export default App
+export default observer(App) 

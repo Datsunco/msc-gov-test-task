@@ -12,11 +12,11 @@ const SkillCircleComponent = ({ elements, circleRadius }) => {
 
     }, [store])
 
-    const checkTextAlign = (angle) => {
-        if (angle < Math.PI && angle > 0) return 'left'
-        else if (angle > Math.PI && angle < Math.PI * 2) return 'right'
-        else return 'center'
-    }
+    // const checkTextAlign = (angle) => {
+    //     if (angle < Math.PI && angle > 0) return 'left'
+    //     else if (angle > Math.PI && angle < Math.PI * 2) return 'right'
+    //     else return 'center'
+    // }
 
     const correctionXOffset = (angle) => {
         if (angle < Math.PI && angle > 0) return +40
@@ -30,11 +30,15 @@ const SkillCircleComponent = ({ elements, circleRadius }) => {
 
         const x = circleRadius + circleRadius * Math.cos(i * angleStep + Math.PI * 3 / 2);
         const y = circleRadius + circleRadius * Math.sin(i * angleStep + Math.PI * 3 / 2);
+        const activeState = store.isActiveSkill(elements[i].name)
+        // console.log(store.isActiveSkill(elements[i].name))
 
         circleElements.push(
             <>
                 <div
                     key={i}
+                    className={activeState ? styles.circle_active : styles.circle }
+                    acti
                     style={{
                         position: 'absolute',
                         top: y,
@@ -43,7 +47,7 @@ const SkillCircleComponent = ({ elements, circleRadius }) => {
                         width: '30px',
                         height: '30px',
                         borderRadius: '50%',
-                        backgroundColor: 'blue',
+                        // backgroundColor: 'blue',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -86,7 +90,7 @@ const SkillCircleComponent = ({ elements, circleRadius }) => {
                 width: circleRadius * 2,
                 height: circleRadius * 2,
                 borderRadius: '50%',
-                border: '1px solid black',
+                border: '2.35px solid #ADADAD',
             }}
         >
             {circleElements}
