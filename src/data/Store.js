@@ -2,8 +2,10 @@ import { makeAutoObservable } from "mobx";
 
 export default class Store {
     skillsData = {}
+    profData = {}
     activeSkills = []
-    activeProfs = []
+    activeProfs = ["Предприниматель"]
+    // activeProfs = []
 
     constructor() {
         makeAutoObservable(this);
@@ -20,7 +22,10 @@ export default class Store {
 
     setSkillsData(skillsData) {
         this.skillsData = skillsData
-        console.log(skillsData)
+    }
+
+    setProfData(profData) {
+        this.profData = profData
     }
 
     isActiveSkill(skill) {
@@ -49,13 +54,12 @@ export default class Store {
     getAxisSkill(skill) {
         const x = this.skillsData[skill].x
         const y = this.skillsData[skill].y
-        console.log(skill,x,y)
         return {x,y}
-        
-        // console.log(skill,this.skillsData.filter(storeSkill => storeSkill.name === skill))
-        // linkedSkillsAxis.push(store.skillsData.filter(storeSkill => storeSkill.name === skill))
-        // console.log(skill, store.skillsData.filter(storeSkill => storeSkill.name === skill))
-
     }
 
+    getAxisProf(prof) {
+        const x = this.profData[prof].x
+        const y = this.profData[prof].y
+        return {x,y}
+    }
 }

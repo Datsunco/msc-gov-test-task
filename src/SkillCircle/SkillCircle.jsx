@@ -9,7 +9,7 @@ const SkillCircleComponent = ({ elements, circleRadius }) => {
     const circleElements = [];
 
     useEffect(() => {
-
+        console.log('changed skill circle')
     }, [store])
 
     // const checkTextAlign = (angle) => {

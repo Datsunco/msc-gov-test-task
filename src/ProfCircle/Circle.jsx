@@ -38,26 +38,6 @@ const CircleComponent = ({ elements, circleRadius }) => {
 
     const activeState = store.isActiveProf(elements[i].name)
 
-    const linkedSkills = [...elements[i].mainSkills, ...elements[i].otherSkills]
-    // const linkedSkillsAxis = []
-
-    if (i) {
-      //Создаем все кривые Безье 
-      linkedSkills.forEach(skill => {
-        const axis = store.getAxisSkill(skill)
-        const d = `M${x+175},${y+175} C${x},${axis.y} ${axis.x},${y} ${axis.x},${axis.y}`;
-        linkedSkillsAxis.push(
-          <path
-            id={x + 'skill'}
-            d={d}
-            fill="none"
-            stroke="black"
-            strokeWidth="2"
-            className={styles.bezier_curve}
-          />)
-      })
-    }
-
     circleElements.push(
       <div onClick={() => onClickProfCircle(elements[i])}>
         <div
@@ -122,7 +102,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
       >
         {circleElements}
       </div>
-      <svg
+      {/* <svg
         style={{
           transform: 'translate(-50%, -50%)',
           position: 'absolute',
@@ -133,7 +113,7 @@ const CircleComponent = ({ elements, circleRadius }) => {
         }}
       >
         {linkedSkillsAxis}
-      </svg>
+      </svg> */}
     </>
   );
 }

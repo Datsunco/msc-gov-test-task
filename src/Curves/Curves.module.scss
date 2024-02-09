@@ -1,0 +1,18 @@
+.bezier_curve {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-curve 5s ease-in-out forwards;
+    stroke: black;
+    stroke-width: 2;
+    fill: none;
+  }
+
+.bezier_curve_disable{
+    display:none;
+}
+  
+  @keyframes draw-curve {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
