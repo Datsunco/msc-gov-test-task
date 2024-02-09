@@ -10,6 +10,8 @@ const CircleComponent = ({ elements, circleRadius }) => {
   const circleElements = [];
   const linkedSkillsAxis = []
 
+  console.log(store.getData())
+
 
   const checkTextAlign = (angle) => {
     if (angle < Math.PI && angle > 0) return 'left'

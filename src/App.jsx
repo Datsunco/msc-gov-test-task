@@ -60,6 +60,9 @@ function App() {
 
   return (
     <>
+      {/* <div>
+        <h1>TEXT</h1>
+      </div> */}
       <CircleComponent elements={data} circleRadius={125} />
       <SkillCircleComponent elements={skillsData} circleRadius={300} />
       <Curves elements={data} />

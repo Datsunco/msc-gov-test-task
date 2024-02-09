@@ -1,14 +1,17 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
 
 export default class Store {
     skillsData = {}
     profData = {}
     activeSkills = []
-    activeProfs = ["Предприниматель"]
-    // activeProfs = []
+    activeProfs = []
+    data = []
 
-    constructor() {
-        makeAutoObservable(this);
+    constructor(data) {
+        makeAutoObservable(this,{
+            data: observable
+        });
+        this.data = data
     }
 
     
@@ -49,6 +52,11 @@ export default class Store {
             }
         })
         return flag
+    }
+
+    getData(){
+        console.log({...this.data})
+        return {...this.data}
     }
 
     getAxisSkill(skill) {
