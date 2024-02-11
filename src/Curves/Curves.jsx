@@ -19,7 +19,7 @@ const Curves = ({ elements }) => {
                 width: 600,
                 height: 600,
                 borderRadius: '50%',
-                zIndex: '99'
+                zIndex: '-1'
             }}
         >
             {elements.map(proffesion =>
