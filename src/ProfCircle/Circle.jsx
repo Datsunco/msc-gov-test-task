@@ -27,6 +27,7 @@ const CircleComponent = ({circleRadius }) => {
   }
 
   const onClickProfCircle = (element) => {
+    // store.setSkillsDataDefault()
     store.setActiveProf(element.name)
     store.setActiveSkills([...element.mainSkills, ...element.otherSkills])
     store.swapSkills(element.name, [...element.mainSkills, ...element.otherSkills])

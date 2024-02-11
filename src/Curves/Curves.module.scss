@@ -1,10 +1,16 @@
-.bezier_curve {
+.bezier_curve, .bezier_curve_other{
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: draw-curve 5s ease-in-out forwards;
-    stroke: black;
+    stroke: #FF7A00;
     stroke-width: 2;
     fill: none;
+    // z-index: 10000;
+  }
+
+  .bezier_curve_other{
+    stroke: #8F59B9;
+    // z-index: 10000;
   }
 
 .bezier_curve_disable{
