@@ -1,16 +1,16 @@
-import React, {useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Context } from '../main';
 import { observer } from 'mobx-react-lite';
 import styles from './SkillCircle.module.scss'
 
-const SkillCircleComponent = ({circleRadius }) => {
+const SkillCircleComponent = ({ circleRadius }) => {
     const { store } = useContext(Context)
     const elements = store.skillsDataArray
     const numberOfElements = elements.length
     const circleElements = [];
 
     useEffect(() => {
-        
+
     }, [store])
 
 
@@ -32,8 +32,7 @@ const SkillCircleComponent = ({circleRadius }) => {
             <>
                 <div
                     key={i}
-                    className={activeState ? styles.circle_active : styles.circle }
-                    acti
+                    className={activeState ? styles.circle_active : styles.circle}
                     style={{
                         position: 'absolute',
                         top: y,
@@ -47,11 +46,12 @@ const SkillCircleComponent = ({circleRadius }) => {
                         justifyContent: 'center',
                         color: 'white',
                         fontWeight: 'bold',
-                        zIndex:'1000'
+                        zIndex: '1000'
                     }}
                 >
                 </div>
                 <div
+                    className={activeState ? styles.text_circle_active : styles.text_circle}
                     style={{
                         position: 'absolute',
                         top: y + 30 * Math.sin(i * angleStep + Math.PI * 3 / 2),
@@ -62,7 +62,7 @@ const SkillCircleComponent = ({circleRadius }) => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#3A3A3A',
+                        // color: '#3A3A3A',
                         fontWeight: '700',
                         fontSize: '12px',
                         lineHeight: '13.28px',
