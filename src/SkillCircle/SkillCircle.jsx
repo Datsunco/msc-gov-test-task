@@ -76,7 +76,6 @@ const SkillCircleComponent = ({circleRadius }) => {
                         fontSize: '12px',
                         lineHeight: '13.28px',
                         verticalAlign: 'middle',
-                        // textAlign: checkTextAlign(i * angleStep)
                     }}
                 >
                     {elements[i].name}

@@ -31,10 +31,7 @@ const CurrentCurves = ({ mainCurves, otherCurves, prof }) => {
 
   useEffect(() => {
     if (store.isActiveProf(prof)) {
-
-      // console.log("changed")
       handleUpdateCurves()
-      // console.log("linkedSkills", linkedSkills, curves, store.isActiveProf(prof))
     }
 
   }, [store.skillsData])
