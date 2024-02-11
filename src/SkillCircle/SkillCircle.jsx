@@ -54,9 +54,10 @@ const SkillCircleComponent = ({circleRadius }) => {
                         justifyContent: 'center',
                         color: 'white',
                         fontWeight: 'bold',
+                        zIndex:'1000'
                     }}
                 >
-                    {i + 1}
+                    {/* {i + 1} */}
 
                 </div>
                 <div

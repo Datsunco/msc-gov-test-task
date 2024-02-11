@@ -63,17 +63,19 @@ const CircleComponent = ({circleRadius }) => {
             fontWeight: 'bold',
           }}
         >
-          {i + 1}
+          {/* {i + 1} */}
         </div>
         <div
           key={i + 'proftxt'}
+          className={activeState ? styles.block_text_active : null}
           style={{
             position: 'absolute',
             top: y + 50 * Math.sin(i * angleStep + Math.PI * 3 / 2),
             left: x + 40 * Math.cos(i * angleStep + Math.PI * 3 / 2) + checkXOffset(i * angleStep),
             transform: 'translate(-50%, -50%)',
-            width: '90px',
-            minHeight: '30px',
+            maxWidth: '110px',
+            minWidth: '90px',
+            // minHeight: '60px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -85,7 +87,9 @@ const CircleComponent = ({circleRadius }) => {
             textAlign: checkTextAlign(i * angleStep)
           }}
         >
+          <b className={activeState ? styles.text_active: null}>
           {elements[i].name}
+          </b>
         </div>
 
       </div>
@@ -107,18 +111,6 @@ const CircleComponent = ({circleRadius }) => {
       >
         {circleElements}
       </div>
-      {/* <svg
-        style={{
-          transform: 'translate(-50%, -50%)',
-          position: 'absolute',
-          width: 600,
-          height: 600,
-          borderRadius: '50%',
-          zIndex: '101'
-        }}
-      >
-        {linkedSkillsAxis}
-      </svg> */}
     </>
   );
 }

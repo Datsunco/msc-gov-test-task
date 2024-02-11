@@ -1,11 +1,11 @@
 .bezier_curve, .bezier_curve_other{
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: draw-curve 5s ease-in-out forwards;
+    animation: draw-curve 3s ease-in-out forwards;
     stroke: #FF7A00;
     stroke-width: 2;
     fill: none;
-    // z-index: 10000;
+    z-index: -1;
   }
 
   .bezier_curve_other{
@@ -20,5 +20,6 @@
   @keyframes draw-curve {
     to {
       stroke-dashoffset: 0;
+      
     }
   }

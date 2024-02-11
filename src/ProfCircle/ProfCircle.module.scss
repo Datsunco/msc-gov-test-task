@@ -6,6 +6,21 @@
     background: #00A372;
 }
 
+.block_text_active{
+    background: rgba(255,255,255,0.5);
+    border: 2px  solid rgb(244,244,244);
+    border-radius: 6px;
+    padding: 8px 3px ;
+    // height: 50px;
+    // border-color: grey;
+    // opacity: 0.5;
+    // opa
+}
+
+.text_active{
+    
+}
+
 // .bezier_curve {
 //     stroke-dasharray: 1000;
 //     stroke-dashoffset: 1000;

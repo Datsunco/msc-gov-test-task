@@ -120,39 +120,27 @@ export default class Store {
 
     swapSkills(prof, linkedSkills) {
         let profCoords = { x: 0, y: 0 }
-        // console.log("PofCOrds",profCoords)
         const angleStep = (2 * Math.PI) / this.data.length;
         let indexProf = this.data.findIndex(skill => skill.name == prof)
 
-        // this.skillsDataArray.forEach(skill => {
-        //     if (skill.name === prof) console.log(true)
-        //     // console.log(skill, prof)
-        // })
-        // console.log(angleStep, indexProf, this.data.length)
-        // console.log("angle", indexProf * angleStep )
+
         profCoords.x = 300 + 300 * Math.cos(indexProf * angleStep + Math.PI * 3 / 2)
         profCoords.y = 300 + 300 * Math.sin(indexProf * angleStep + Math.PI * 3 / 2)
-        // console.log("x",profCoords.x, "y" , profCoords.y)
+
 
         let minDif = 100000
         let closeSkill = ''
         this.skillsDataArray.forEach(skill => {
             const dif = Math.sqrt(Math.pow((skill.x - profCoords.x), 2) + Math.pow((skill.y - profCoords.y), 2))
-            // console.log("skill",skill.name,profCoords, skill.x,skill.y)
-            // console.log("diff", dif)
             if (minDif > dif) {
                 minDif = dif
                 closeSkill = skill.name
-                // console.log("closeSkill",closeSkill,profCoords, skill.x,skill.y)
-                // console.log("close")
             }
         })
-        // console.log(closeSkill)
 
         const indexSkill = this.skillsDataArray.findIndex(skill => skill.name == closeSkill)
         const indexStart = indexSkill - Math.floor(linkedSkills.length / 2)
         const indexEnd = indexSkill + Math.ceil(linkedSkills.length / 2) - 1
-        // console.log(indexStart, indexSkill, indexEnd)
 
         const newSkillDataArray = []
         this.skillsDataArray.forEach(skill => {
@@ -171,21 +159,15 @@ export default class Store {
             const tmp = newSkillDataArray[index].name
             newSkillDataArray[index].name = newSkillDataArray[indexTmp].name
             newSkillDataArray[indexTmp].name = tmp
-            // const tmp = newSkillDataArray[index]
-            // newSkillDataArray[index] = newSkillDataArray[indexTmp]
-            // newSkillDataArray[indexTmp] = tmp
         }
 
-        // console.log(newSkillDataArray)
         this.setSkillsDataArray(newSkillDataArray)
-        console.log(newSkillDataArray)
 
         let newSkillDataObject = {}
         newSkillDataArray.forEach(skill => {
             newSkillDataObject[skill.name] = { x: skill.x, y: skill.y }
         })
         this.setSkillsData(newSkillDataObject)
-        console.log(newSkillDataObject)
 
     }
 }
