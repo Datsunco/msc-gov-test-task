@@ -48,7 +48,6 @@ const SkillCircleComponent = ({circleRadius }) => {
                         width: '30px',
                         height: '30px',
                         borderRadius: '50%',
-                        // backgroundColor: 'blue',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -57,8 +56,6 @@ const SkillCircleComponent = ({circleRadius }) => {
                         zIndex:'1000'
                     }}
                 >
-                    {/* {i + 1} */}
-
                 </div>
                 <div
                     style={{

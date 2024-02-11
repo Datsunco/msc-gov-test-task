@@ -61,9 +61,6 @@ function App() {
 
   return (
     <>
-      {/* <div>
-        <h1>TEXT</h1>
-      </div> */}
       <CircleComponent circleRadius={125} />
       <SkillCircleComponent circleRadius={300} />
       <Curves elements={data} />
