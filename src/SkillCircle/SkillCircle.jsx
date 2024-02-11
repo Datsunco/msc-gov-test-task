@@ -10,14 +10,9 @@ const SkillCircleComponent = ({circleRadius }) => {
     const circleElements = [];
 
     useEffect(() => {
-        // console.log('changed skill circle')
+        
     }, [store])
 
-    // const checkTextAlign = (angle) => {
-    //     if (angle < Math.PI && angle > 0) return 'left'
-    //     else if (angle > Math.PI && angle < Math.PI * 2) return 'right'
-    //     else return 'center'
-    // }
 
     const correctionXOffset = (angle) => {
         if (angle < Math.PI && angle > 0) return +40
@@ -32,7 +27,6 @@ const SkillCircleComponent = ({circleRadius }) => {
         const x = circleRadius + circleRadius * Math.cos(i * angleStep + Math.PI * 3 / 2);
         const y = circleRadius + circleRadius * Math.sin(i * angleStep + Math.PI * 3 / 2);
         const activeState = store.isActiveSkill(elements[i].name)
-        // console.log(store.isActiveSkill(elements[i].name))
 
         circleElements.push(
             <>

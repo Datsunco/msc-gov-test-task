@@ -11,7 +11,6 @@ const CircleComponent = ({circleRadius }) => {
   const circleElements = [];
   const linkedSkillsAxis = []
 
-  // console.log(store.getData())
 
 
   const checkTextAlign = (angle) => {
@@ -62,7 +61,6 @@ const CircleComponent = ({circleRadius }) => {
             fontWeight: 'bold',
           }}
         >
-          {/* {i + 1} */}
         </div>
         <div
           key={i + 'proftxt'}
